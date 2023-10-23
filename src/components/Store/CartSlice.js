@@ -9,6 +9,13 @@ const CartSlice = createSlice({
     toggleCart: (state) => {
       state.toggleCart = !state.toggleCart;
     },
+    addToCart: (state, action) => {
+      state.cartItems.push(action.payload);
+      console.log(action.payload);
+    },
+    removeFromCart: (state, action) => {
+      state.cartItems.pop();
+    },
   },
 });
 
