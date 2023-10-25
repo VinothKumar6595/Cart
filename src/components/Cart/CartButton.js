@@ -5,6 +5,9 @@ import { cartActions } from "../Store/CartSlice";
 const CartButton = (props) => {
   const dispatch = useDispatch();
   const cartQty = useSelector((state) => state.cartReducer.cartItems);
+  const totalQty = cartQty.reduce((curr, item) => {
+    return curr + Number(item.quantity);
+  }, 0);
   console.log(cartQty);
   return (
     <button
@@ -14,7 +17,7 @@ const CartButton = (props) => {
       }}
     >
       <span>My Cart</span>
-      <span className={classes.badge}>{cartQty.length}</span>
+      <span className={classes.badge}>{totalQty}</span>
     </button>
   );
 };

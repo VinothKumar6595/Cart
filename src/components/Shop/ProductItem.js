@@ -4,7 +4,7 @@ import classes from "./ProductItem.module.css";
 import { cartActions } from "../Store/CartSlice";
 
 const ProductItem = (props) => {
-  const { title, price, description } = props;
+  const { title, price, description, id } = props;
   const dispatch = useDispatch();
 
   return (
@@ -18,7 +18,7 @@ const ProductItem = (props) => {
         <div className={classes.actions}>
           <button
             onClick={() => {
-              dispatch(cartActions.addToCart(props));
+              dispatch(cartActions.addToCart({ title, price, id }));
             }}
           >
             Add to Cart
