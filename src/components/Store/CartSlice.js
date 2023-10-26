@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { uiActions } from "./Notification-slice";
 
 const initialCartState = { toggleCart: true, cartItems: [] };
 
@@ -8,6 +9,9 @@ const CartSlice = createSlice({
   reducers: {
     toggleCart: (state) => {
       state.toggleCart = !state.toggleCart;
+    },
+    replaceCart: (state, action) => {
+      state.cartItems = action.payload.cartItems;
     },
     addToCart: (state, action) => {
       const newItem = action.payload;
