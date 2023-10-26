@@ -10,6 +10,7 @@ function App() {
   const cartToggle = useSelector((state) => state.cartReducer.toggleCart);
   const cart = useSelector((state) => state.cartReducer);
   const notification = useSelector((state) => state.Ui.notification);
+  const changed = useSelector((state) => state.cartReducer.changed);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,7 +22,9 @@ function App() {
       isInitial = false;
       return;
     }
-    dispatch(sendToCart(cart));
+    if (changed) {
+      dispatch(sendToCart(cart));
+    }
   }, [cart, dispatch]);
 
   return (
